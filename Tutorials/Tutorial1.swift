@@ -53,7 +53,7 @@ class Tutorial1 {
     :param: target 変換後のフレーム: バッファーを持っていなければならない！
     :returns:
     */
-    func swsScale(option: SwsContextOption, source: UnsafePointer<AVFrame>, target: UnsafePointer<AVFrame>) -> Int {
+    func swsScale(option: SwsContext, source: UnsafePointer<AVFrame>, target: UnsafePointer<AVFrame>, height: Int32) -> Int {
         
         let sourceData = [
             UnsafePointer<UInt8>(source.memory.data.0),
@@ -97,11 +97,11 @@ class Tutorial1 {
             target.memory.linesize.7
         ]
         let result = sws_scale(
-            option.value,
+            option,
             sourceData,
             sourceLineSize,
             0,
-            option.codecContext.memory.height,
+            height,
             targetData,
             targetLineSize
         )
@@ -190,9 +190,12 @@ class Tutorial1 {
                 if decodeVideo(codecContext, frame: frame, packet: packet) {
                     
                     // 画像をRGB形式に変換。サイズはデフォルト (ソースと同じ)
-                    let swsContextOption = SwsContextOption(codecContext: codecContext)
-                    swsContextOption.format = PIX_FMT_RGB24
-                    swsScale(swsContextOption, source: frame, target: convertedFrame)
+                    let swsContextOption = sws_getContext(
+                        codecContext.memory.width,
+                        codecContext.memory.height,
+                        codecContext.memory.pix_fmt,
+                        w, h, PIX_FMT_RGB24, SWS_BILINEAR, nil, nil, nil)
+                    swsScale(swsContextOption, source: frame, target: convertedFrame, height: h)
                     
                     // 100フレームごとに1つ保存
                     if ++i % 100 == 0 {
@@ -211,53 +214,7 @@ class Tutorial1 {
         // コーデックを閉じる
         avcodec_close(codecContext)
         
-        // ファイルを閉じる
+        // 動画ファイルを閉じる
         avformat_close_input(&formatContext)
     }
-}
-
-class SwsContextOption {
-    let codecContext: UnsafePointer<AVCodecContext>
-    var width: Int
-    var height: Int
-    var format: AVPixelFormat
-    var flags: Int32
-    
-    private var swsContext: SwsContext?
-    
-    /**
-    イニシャライザー
-    
-    :param: sourceStream Streamクラスのインスタンス
-    */
-    init(codecContext: UnsafePointer<AVCodecContext>) {
-        self.codecContext = codecContext
-        width = Int(codecContext.memory.width)
-        height = Int(codecContext.memory.height)
-        format = codecContext.memory.pix_fmt
-        
-        // ???
-        // 値からすると、足して使うっぽい？
-        flags = SWS_BILINEAR
-    }
-    deinit {
-        swsContext?.dealloc()
-    }
-    
-    /**
-    SwsContext
-    
-    :returns: struct SwsContext (実体はCOpaquePointer)
-    */
-    var value: SwsContext {
-        return sws_getContext(
-            codecContext.memory.width,
-            codecContext.memory.height,
-            codecContext.memory.pix_fmt,
-            Int32(width), Int32(height), format, SWS_BILINEAR, nil, nil, nil)
-    }
-}
-
-extension SwsContext {
-    func dealloc() { sws_freeContext(self) }
 }
