@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		9222D19E1A70C0290072B497 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9222D19D1A70C0290072B497 /* main.swift */; };
+		9222D1A81A70C04C0072B497 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9222D1A41A70C04C0072B497 /* libavcodec.a */; };
+		9222D1A91A70C04C0072B497 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9222D1A51A70C04C0072B497 /* libavformat.a */; };
+		9222D1AA1A70C04C0072B497 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9222D1A61A70C04C0072B497 /* libavutil.a */; };
+		9222D1AB1A70C04C0072B497 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9222D1A71A70C04C0072B497 /* libswscale.a */; };
+		9222D1B01A70C0C80072B497 /* Tutorial1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9222D1AF1A70C0C80072B497 /* Tutorial1.swift */; };
+		9222D1B21A70C33B0072B497 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9222D1B11A70C33B0072B497 /* extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +31,13 @@
 /* Begin PBXFileReference section */
 		9222D19A1A70C0290072B497 /* Tutorials */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tutorials; sourceTree = BUILT_PRODUCTS_DIR; };
 		9222D19D1A70C0290072B497 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		9222D1A41A70C04C0072B497 /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = ../../../../usr/local/Cellar/ffmpeg/2.5.2/lib/libavcodec.a; sourceTree = "<group>"; };
+		9222D1A51A70C04C0072B497 /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = ../../../../usr/local/Cellar/ffmpeg/2.5.2/lib/libavformat.a; sourceTree = "<group>"; };
+		9222D1A61A70C04C0072B497 /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = ../../../../usr/local/Cellar/ffmpeg/2.5.2/lib/libavutil.a; sourceTree = "<group>"; };
+		9222D1A71A70C04C0072B497 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswscale.a; path = ../../../../usr/local/Cellar/ffmpeg/2.5.2/lib/libswscale.a; sourceTree = "<group>"; };
+		9222D1AC1A70C0620072B497 /* Tutorials-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tutorials-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		9222D1AF1A70C0C80072B497 /* Tutorial1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial1.swift; sourceTree = "<group>"; };
+		9222D1B11A70C33B0072B497 /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +45,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9222D1A81A70C04C0072B497 /* libavcodec.a in Frameworks */,
+				9222D1A91A70C04C0072B497 /* libavformat.a in Frameworks */,
+				9222D1AA1A70C04C0072B497 /* libavutil.a in Frameworks */,
+				9222D1AB1A70C04C0072B497 /* libswscale.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +58,10 @@
 		9222D1911A70C0290072B497 = {
 			isa = PBXGroup;
 			children = (
+				9222D1A41A70C04C0072B497 /* libavcodec.a */,
+				9222D1A51A70C04C0072B497 /* libavformat.a */,
+				9222D1A61A70C04C0072B497 /* libavutil.a */,
+				9222D1A71A70C04C0072B497 /* libswscale.a */,
 				9222D19C1A70C0290072B497 /* Tutorials */,
 				9222D19B1A70C0290072B497 /* Products */,
 			);
@@ -57,7 +78,10 @@
 		9222D19C1A70C0290072B497 /* Tutorials */ = {
 			isa = PBXGroup;
 			children = (
+				9222D1AC1A70C0620072B497 /* Tutorials-Bridging-Header.h */,
 				9222D19D1A70C0290072B497 /* main.swift */,
+				9222D1AF1A70C0C80072B497 /* Tutorial1.swift */,
+				9222D1B11A70C33B0072B497 /* extensions.swift */,
 			);
 			path = Tutorials;
 			sourceTree = "<group>";
@@ -119,6 +143,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9222D19E1A70C0290072B497 /* main.swift in Sources */,
+				9222D1B01A70C0C80072B497 /* Tutorial1.swift in Sources */,
+				9222D1B21A70C33B0072B497 /* extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,14 +229,39 @@
 		9222D1A21A70C0290072B497 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include,
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/ffmpeg/2.5.2/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tutorials-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		9222D1A31A70C0290072B497 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include,
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/ffmpeg/2.5.2/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tutorials-Bridging-Header.h";
 			};
 			name = Release;
 		};
